@@ -22,8 +22,8 @@ RUN apk update && apk add --no-cache \
   dumb-init
 
 # Clona o projeto WPPConnect
-RUN git clone https://github.com/wppconnect-team/wppconnect-server.git
-WORKDIR /wppconnect-server
+RUN git clone https://github.com/yurirssilva/medicina-back.git
+WORKDIR /medicina-back
 
 # Instala dependências
 RUN yarn install
@@ -35,4 +35,4 @@ EXPOSE 21465
 
 # Comando de inicialização (substitui CMD padrão do Node por dumb-init)
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["yarn", "dev"]
+CMD ["node", "app.js", "--no-sandbox"]
